@@ -3,6 +3,11 @@
 {% block content %}
 <section class="card">
   <h1>Catatan Belajar</h1>
-  <p>Kerangka latihan Kuis 2 sudah berjalan. Mulai dari Drill 1 pada modul.</p>
+  {% if user.is_authenticated %}
+    <p>Halo, {{ user.username }}.</p>
+    <p><a href="{% url 'main:show_notes' %}">Catatan (JavaScript)</a> · <a href="{% url 'main:show_notes_htmx' %}">Catatan (HTMX)</a> · <a href="{% url 'main:logout' %}">Logout</a></p>
+  {% else %}
+    <p><a href="{% url 'main:login' %}">Login</a> · <a href="{% url 'main:register' %}">Registrasi</a></p>
+  {% endif %}
 </section>
 {% endblock %}

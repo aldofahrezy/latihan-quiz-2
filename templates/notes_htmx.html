@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Catatan Saya (HTMX){% endblock %}
+{% block content %}
+<div hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  <header class="card">
+    <h1>Catatan milik {{ user.username }}</h1>
+    <p><a href="{% url 'main:show_notes' %}">Versi JavaScript</a> · <a href="{% url 'main:logout' %}">Logout</a></p>
+  </header>
+  {% include "_notes_section.html" %}
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/htmx.min.js' %}"></script>
+{% endblock %}

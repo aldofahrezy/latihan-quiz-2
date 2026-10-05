@@ -1,0 +1,26 @@
+<section id="notes-section">
+  <form class="card"
+        hx-post="{% url 'main:create_note_htmx' %}"
+        hx-target="#notes-section"
+        hx-swap="outerHTML">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Simpan</button>
+  </form>
+
+  <ul id="note-list">
+    {% for note in notes %}
+      <li class="card" id="note-{{ note.id }}">
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        <button class="btn"
+                hx-delete="{% url 'main:delete_note_htmx' note.id %}"
+                hx-target="closest li"
+                hx-swap="outerHTML"
+                hx-confirm="Hapus catatan {{ note.title }}?">Hapus</button>
+      </li>
+    {% empty %}
+      <li>Belum ada catatan.</li>
+    {% endfor %}
+  </ul>
+</section>
