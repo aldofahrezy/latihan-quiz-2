@@ -1,0 +1,7 @@
+:root { --ink: #1f2933; --accent: #2f855a; --muted: #6b7280; }
+body { font-family: system-ui, sans-serif; color: var(--ink); margin: 0; background: #f7f7f5; }
+.container { max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+.btn { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: .5rem 1rem; cursor: pointer; }
+.error { color: #b91c1c; }
+.muted { color: var(--muted); font-size: .9rem; }

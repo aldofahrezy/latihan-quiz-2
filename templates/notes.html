@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Catatan Saya{% endblock %}
+{% block content %}
+<header class="card">
+  <h1>Catatan milik {{ username }}</h1>
+  <p class="muted">Login terakhir: {{ last_login }}</p>
+  <p><a href="{% url 'main:logout' %}">Logout</a></p>
+</header>
+
+<section class="card">
+  <h2>Tambah Catatan</h2>
+  <form id="note-form">
+    {% csrf_token %}
+    <p><label for="title">Judul</label><br><input id="title" name="title" maxlength="100"></p>
+    <p><label for="content">Isi</label><br><textarea id="content" name="content"></textarea></p>
+    <p id="form-error" class="error"></p>
+    <button type="submit" class="btn">Simpan</button>
+  </form>
+</section>
+
+<section>
+  <h2>Daftar Catatan</h2>
+  <ul id="note-list"></ul>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/notes.js' %}"></script>
+{% endblock %}
